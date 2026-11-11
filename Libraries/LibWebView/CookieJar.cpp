@@ -512,7 +512,8 @@ void CookieJar::set_cookie(URL::URL const& url, HTTP::Cookie::ParsedCookie const
         // 4. Remove the old-cookie from the cookie store.
         // NOTE: Rather than deleting then re-inserting this cookie, we update it in-place.
     }
-
+    if (!cookie.partition_key.is_empty() && cookie.expiry_time >= UnixDateTime::now())
+        return;
     // 24. Insert the newly-created cookie into the cookie store.
     m_transient_storage.set_cookie(move(key), move(cookie));
 
