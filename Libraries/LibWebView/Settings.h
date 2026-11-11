@@ -220,7 +220,7 @@ struct WEBVIEW_API SettingsData {
     AutoplaySiteSetting m_autoplay;
     HashMap<Web::Permissions::PermissionName, PermissionPolicy> m_permission_policies;
 
-    GlobalPrivacyControl m_global_privacy_control { GlobalPrivacyControl::No };
+    GlobalPrivacyControl m_global_privacy_control { GlobalPrivacyControl::Yes };
     CrashReportSending m_crash_report_sending { CrashReportSending::AskMe };
 
     bool m_background_networking_enabled { true };
