@@ -194,8 +194,11 @@ String CookieJar::get_cookie(URL::URL const& url, HTTP::Cookie::Source source, O
 {
     m_transient_storage.purge_expired_cookies();
 
-    auto cookie_list = get_matching_cookies(url, source, partition_key_for(url, context), same_site_context);
+    auto partition_key = partition_key_for(url, context);
+if (!partition_key.is_empty())
+    return {};
 
+auto cookie_list = get_matching_cookies(url, source, partition_key, same_site_context);
     // 6. Serialize the cookie-list into a cookie-string by processing each cookie in the cookie-list in order:
     StringBuilder builder;
 
