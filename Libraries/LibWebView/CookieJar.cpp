@@ -619,7 +619,11 @@ Vector<HTTP::Cookie::Cookie> CookieJar::get_all_cookies_webdriver(URL::URL const
 
 Vector<HTTP::Cookie::Cookie> CookieJar::get_all_cookies_cookiestore(URL::URL const& url, Optional<HTTP::Cookie::PartitionContext> const& context, HTTP::Cookie::SameSiteContext same_site_context)
 {
-    return get_matching_cookies(url, HTTP::Cookie::Source::NonHttp, partition_key_for(url, context), same_site_context);
+    auto partition_key = partition_key_for(url, context);
+    if (!partition_key.is_empty())
+        return {};
+
+    return get_matching_cookies(url, HTTP::Cookie::Source::NonHttp, partition_key, same_site_context);
 }
 
 Optional<HTTP::Cookie::Cookie> CookieJar::get_named_cookie(URL::URL const& url, StringView name)
