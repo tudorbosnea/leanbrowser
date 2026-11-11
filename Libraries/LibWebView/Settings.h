@@ -224,8 +224,8 @@ struct WEBVIEW_API SettingsData {
     CrashReportSending m_crash_report_sending { CrashReportSending::AskMe };
 
     bool m_background_networking_enabled { true };
-    bool m_filter_list_updates_enabled { false };
-    bool m_content_blocker_enabled { false };
+    bool m_filter_list_updates_enabled { true };
+    bool m_content_blocker_enabled { true };
     HashTable<String> m_content_blocker_disabled_sites;
     Vector<ContentBlockerList> m_content_blocker_lists;
     String m_custom_content_blocker_filters;
