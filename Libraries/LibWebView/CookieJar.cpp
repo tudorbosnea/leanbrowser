@@ -198,7 +198,7 @@ String CookieJar::get_cookie(URL::URL const& url, HTTP::Cookie::Source source, O
 if (!partition_key.is_empty())
     return {};
 
-auto cookie_list = get_matching_cookies(url, source, partition_key, same_site_context);
+    auto cookie_list = get_matching_cookies(url, source, partition_key, same_site_context);
     // 6. Serialize the cookie-list into a cookie-string by processing each cookie in the cookie-list in order:
     StringBuilder builder;
 
